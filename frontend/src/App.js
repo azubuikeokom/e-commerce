@@ -1,20 +1,20 @@
 import './App.css';
-import React ,{useEffect,useState}  from 'react';
+import React ,{useEffect}  from 'react';
 import {BrowserRouter,Route, Routes} from "react-router-dom";
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from './actions/productsAction';
 
 
 function App() {
-  const [products,setProducts]=useState([]);
+  const productList=useSelector(state=>state.productList);
+  const {products,loading,error}=productList;
+  const dispatch=useDispatch();
+
   useEffect(()=>{
-    const fetchedDate=async()=>{
-        const {data}=await axios.get("/api/products")
-        setProducts(data)  
-    }
-    fetchedDate();  
+    dispatch(listProducts());
 },[])
   const openMenu=()=>{
     document.querySelector(".sidebar").classList.add("open")
@@ -23,7 +23,9 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open")
   }
 
-  return (
+  return loading ? <div>Loading...</div> :
+    error ? <div>error</div> :
+  (
     <BrowserRouter>
     <div className="grid-container">
       <header className="header">
