@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Amazona</title>
+</head>
+<body>
+    <div class="grid-container">
+        <header class="header">
+            <div class="brand">
+                <button class="brand-button" onclick=openMenu()>
+                    &#9776;
+                </button>
+                <a href="index.html">Amazona</a>
+            </div>
+            <div>
+                <span>Signin</span>
+                <span>Cart</span>
+            </div>
+        </header>
+        <aside class="sidebar">
+            <h1>Shopping categories</h1>
+            <button class="close-button" onclick=closeMenu()>X</button>
+            <ul>
+                <li>Pants</li>
+                <li>Shirts</li>
+            </ul>
+        </aside>
+        <main class="main">
+            <div class="content">
+                <ul class="products">
+                    <li>
+                        <img src="./images/d1.jpg" alt="shirt" class="img">
+                        <div class="product">
+                            <div class="product-name"><a href="">Slim Shirt</a></div>
+                            <div class="product-brand">Nike</div>
+                            <div class="product-price">$60</div>
+                            <div class="product-rating">4 stars {10 reviews}</div>
+                        </div>
+                       
+                    </li>
+                    <li>
+                        <img src="./images/d1.jpg" alt="shirt" class="img">
+                        <div class="product">
+                            <div class="product-name"><a href="">Slim Shirt</a></div>
+                            <div class="product-brand">Nike</div>
+                            <div class="product-price">$60</div>
+                            <div class="product-rating">4 stars {10 reviews}</div>
+                        </div>
+                       
+                    </li>
+                    <li>
+                        <img src="./images/d1.jpg" alt="shirt" class="img">
+                        <div class="product">
+                            <div class="product-name"><a href="">Slim Shirt</a></div>
+                            <div class="product-brand">Nike</div>
+                            <div class="product-price">$60</div>
+                            <div class="product-rating">4 stars {10 reviews}</div>
+                        </div>
+                       
+                    </li>
+                    <li>
+                        <img src="./images/d1.jpg" alt="shirt" class="img">
+                        <div class="product">
+                            <div class="product-name"><a href="">Slim Shirt</a></div>
+                            <div class="product-brand">Nike</div>
+                            <div class="product-price">$60</div>
+                            <div class="product-rating">4 stars {10 reviews}</div>
+                        </div>
+                       
+                    </li>
+                    <li>
+                        <img src="./images/d1.jpg" alt="shirt" class="img">
+                        <div class="product">
+                            <div class="product-name"><a href="">Slim Shirt</a></div>
+                            <div class="product-brand">Nike</div>
+                            <div class="product-price">$60</div>
+                            <div class="product-rating">4 stars {10 reviews}</div>
+                        </div>
+                       
+                    </li>
+                </ul>
+            </div>
+
+        </main>
+        <footer class="footer"><div>All rights reserved</div></footer>
+    </div>
+<script>
+    function openMenu(){
+        document.querySelector(".sidebar").classList.add("open")
+    }
+    function closeMenu(){
+        document.querySelector(".sidebar").classList.remove("open")
+    }
+</script>
+</body>
+</html>
