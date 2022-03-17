@@ -6,6 +6,7 @@ import ProductScreen from './Screens/ProductScreen';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from './actions/productsAction';
+import {CartScreen} from './Screens/CartScreen';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
   }
 
   return loading ? <div>Loading...</div> :
-    error ? <div>error</div> :
+    error ? <div>{error}</div> :
   (
     <BrowserRouter>
     <div className="grid-container">
@@ -51,8 +52,9 @@ function App() {
     <main className="main">
         <div className="content">
             <Routes>
-              <Route path='/products/:id' element={<ProductScreen products={products}/>} />  
-              <Route path='/' exact={true} element={<HomeScreen products={products}/>}/>
+              <Route path='/products/:id' element={<ProductScreen />} />  
+              <Route path='/cart/:id?'  element={<CartScreen />}/>
+              <Route path='/' exact={true} element={<HomeScreen items={products}/>}/>
             </Routes>
         </div>
 

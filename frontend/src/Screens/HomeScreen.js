@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 
 
-export default function HomeScreen({products}){
+export default function HomeScreen({items}){
 
     return  (
         <ul className="products">
-        {products.map(product=>{
+        {items.map(product=>{
           return  (
             <li key={product.id}>
               <Link to={`/products/${product.id}`}><img src={product.image} alt={product.name} className="img"/></Link>             
