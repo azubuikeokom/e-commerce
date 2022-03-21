@@ -1,17 +1,25 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState} from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams,useNavigate  } from "react-router-dom";
 import { detailsProduct } from "../actions/productsAction";
 
 
+
 export default function ProductScreen(){
-    const {id}=useParams()
+    const navigate=useNavigate();
+    const {id}=useParams();
+    const [qty,setQty]=useState(1);
     const productDetails=useSelector(state=>state.productDetails);
     const {product,loading,error}=productDetails;
     const dispatch=useDispatch();
+
+    //called on render
     useEffect(()=>{
         dispatch(detailsProduct(id))
     },[])
+    const handleAddToCart=()=>{
+        navigate(`/cart/${id}?qty=${qty}`);
+    }
     return loading ? <div>loading....</div> : error ?
         <div>{error}</div> :
     (   
@@ -30,14 +38,14 @@ export default function ProductScreen(){
                     <div className="details-action">
                        <div> Price : {product.price}</div>
                        <div>Status : {product.status}</div>
-                       <div> Qty : <select>
-                           <option>1</option>
-                           <option>2</option>
-                           <option>3</option>
-                           <option>4</option>
+                       <div> Qty : <select value={qty} onChange={(e)=>{setQty(e.target.value)}}>
+                          {[...Array(product.count_in_stock).keys()].map(x=>
+                              <option key={x+1} value={x+1}>{x+1}</option>
+                          )}
                            </select>
-                           </div>
-                           <button className="add-to-cart"><Link to={`/cart/${product.id}`}>Add to Cart</Link></button>
+                           </div>{product.count_in_stock > 0 ?
+                            <button className="add-to-cart" onClick={handleAddToCart}>Add to Cart</button> : <p>Item is out of stock</p>}
+                           
                     </div>
                 </div>
             </div>

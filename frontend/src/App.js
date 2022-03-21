@@ -13,7 +13,8 @@ function App() {
   const productList=useSelector(state=>state.productList);
   const {products,loading,error}=productList;
   const dispatch=useDispatch();
-
+  
+//called on render
   useEffect(()=>{
     dispatch(listProducts());
 },[])
@@ -53,7 +54,7 @@ function App() {
         <div className="content">
             <Routes>
               <Route path='/products/:id' element={<ProductScreen />} />  
-              <Route path='/cart/:id?'  element={<CartScreen />}/>
+              <Route path='/cart/:id'  element={<CartScreen />}/>
               <Route path='/' exact={true} element={<HomeScreen items={products}/>}/>
             </Routes>
         </div>
